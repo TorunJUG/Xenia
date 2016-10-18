@@ -1,0 +1,6 @@
+[submodule "xenia-api"]
+	path = xenia-api
+	url = https://github.com/TorunJUG/xenia-api
+[submodule "xenia-ng"]
+	path = xenia-ng
+	url = https://github.com/TorunJUG/xenia-ng
