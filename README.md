@@ -5,3 +5,7 @@ Prize drawing machine based on [Meetup.com](https://www.meetup.com)
 Project consists of two submodules:
 - [xenia-api](https://github.com/TorunJUG/xenia-api/) - contains engine and API based on Groovy and Spring Boot ([read more about this module](https://github.com/TorunJUG/xenia-api/blob/master/README.md))
 - [xenia-ng](https://github.com/TorunJUG/xenia-ng/) - contains frontend based on AngularJS ([read more about this module](https://github.com/TorunJUG/xenia-ng/blob/master/README.md))
+
+**NOTE** To get submodules while cloning remember to add `--recursive`, for example:
+
+ `git clone --recursive git@github.com:TorunJUG/Xenia.git`
