@@ -1,8 +1,0 @@
-[submodule "xenia-api"]
-	path = xenia-api
-	url = https://github.com/TorunJUG/xenia-api
-	branch = 2.0-develop
-[submodule "xenia-ng"]
-	path = xenia-ng
-	url = https://github.com/TorunJUG/xenia-ng
-	branch = 2.0-develop
