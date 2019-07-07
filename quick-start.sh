@@ -1,17 +1,18 @@
 #!/bin/bash
 if [ $# -lt 1 ]; then
 	echo "Usage:"
-	echo "  $0 MEETUP_KEY [MEETUP_GROUP]"
+	echo "  $0 OAUTH_CLIENT_ID OAUTH_CLIENT_SECRET [MEETUP_GROUP]"
 	exit -1;
 fi
-MEETUP_KEY=$1
-GROUP_NAME=${2:-Torun-JUG}
+OAUTH_CLIENT_ID=$1
+OAUTH_CLIENT_SECRET=$2
+GROUP_NAME=${3:-Torun-JUG}
 
 cd xenia-api
 
 trap 'kill -TERM $PID1 $PID2' TERM INT
 
-mvn -DMEETUP_KEY=$MEETUP_KEY -DMEETUP_GROUP_URL_NAME=$GROUP_NAME spring-boot:run &
+mvn spring-boot:run -Dspring-boot.run.arguments=--oauth.clientId=$OAUTH_CLIENT_ID,--oauth.clientSecret=$OAUTH_CLIENT_SECRET,--meetup.groupUrlName=$GROUP_NAME &
 PID1=$!
 
 cd ../xenia-ng
