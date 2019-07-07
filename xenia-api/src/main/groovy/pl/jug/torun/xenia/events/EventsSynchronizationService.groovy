@@ -21,6 +21,6 @@ class EventsSynchronizationService {
     @Transactional
     public void synchronizeLocalEventsWithRemoteService() {
         List<Event> events = meetupClient.getAllEvents()
-        eventRepository.save(events)
+        eventRepository.saveAll(events)
     }
 }

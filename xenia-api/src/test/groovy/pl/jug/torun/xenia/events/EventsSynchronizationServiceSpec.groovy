@@ -72,7 +72,7 @@ class EventsSynchronizationServiceSpec extends Specification implements MeetupCl
         eventRepository.count() == 38
 
         and:
-        eventRepository.findOne(175597572L).name == '2. spotkanie Toruń JUG'
+        eventRepository.findById(175597572L).get().name == '2. spotkanie Toruń JUG'
     }
 
     def "should synchronized changes made to remote events"() {
@@ -83,6 +83,6 @@ class EventsSynchronizationServiceSpec extends Specification implements MeetupCl
         service.synchronizeLocalEventsWithRemoteService()
 
         then:
-        eventRepository.findOne(175597572L).name == '2. spotkanie Toruń JUG - updated name'
+        eventRepository.findById(175597572L).get().name == '2. spotkanie Toruń JUG - updated name'
     }
 }

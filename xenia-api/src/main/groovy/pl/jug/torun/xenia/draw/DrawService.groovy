@@ -72,7 +72,7 @@ class DrawService {
     public DrawResult confirmWinner(final GiveAway giveAway, long memberId) {
         Assert.state giveAway.amount > drawResultRepository.countAllByGiveAway(giveAway), 'You cannot draw more giveaways for this prize!'
 
-        Member member = memberRepository.findOne(memberId)
+        Member member = memberRepository.findById(memberId).get()
         DrawResult drawResult = new DrawResult(giveAway, member)
         return drawResultRepository.save(drawResult)
     }
@@ -80,7 +80,7 @@ class DrawService {
     @Transactional
     public void markMemberAsAbsentForCurrentDraw(final Member member, final Event event) {
         log.debug 'Member {} is not present at the event, marking as absent to skip this member in next draw...', member.name
-        Attendee attendee = attendeeRepository.findOne(new Attendee.Id(event, member))
+        Attendee attendee = attendeeRepository.findById(new Attendee.Id(event, member)).get()
         if (attendee) {
             attendee.absent = true
             attendeeRepository.save(attendee)

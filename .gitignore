@@ -1,1 +1,5 @@
 .idea
+# Project exclude paths
+/xenia-ng/node_modules/
+# Project exclude paths
+/xenia-api/target/

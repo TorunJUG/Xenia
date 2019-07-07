@@ -4,10 +4,10 @@ MAINTAINER Jakub Marchwicki <kuba.marchwicki@gmail.com>
 
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-7-jdk maven && \
+  apt-get install -y openjdk-11-jdk maven && \
   rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 RUN mkdir /xenia-api
 EXPOSE 8080
