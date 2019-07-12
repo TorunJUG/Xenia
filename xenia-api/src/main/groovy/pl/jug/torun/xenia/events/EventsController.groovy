@@ -34,6 +34,6 @@ final class EventsController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Event eventDetails(@PathVariable("id") long id) {
-        return eventRepository.findOne(id)
+        return eventRepository.findById(id).get()
     }
 }

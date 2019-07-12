@@ -73,7 +73,7 @@ class AttendeeRepositorySpec extends Specification {
 
     def "should confirm that John attends event"() {
         when:
-        Attendee attendee = attendeeRepository.findOne(new Attendee.Id(event, john))
+        Attendee attendee = attendeeRepository.findById(new Attendee.Id(event, john)).get()
 
         then:
         attendee.member == john
@@ -81,7 +81,7 @@ class AttendeeRepositorySpec extends Specification {
 
     def "should confirm that Mark attends event"() {
         when:
-        Attendee attendee = attendeeRepository.findOne(new Attendee.Id(event, mark))
+        Attendee attendee = attendeeRepository.findById(new Attendee.Id(event, mark)).get()
 
         then:
         attendee.member == mark

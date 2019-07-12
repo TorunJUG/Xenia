@@ -94,12 +94,12 @@ class Xenia10DumpRecoverySpec extends Specification {
         dumpRecovery.recover()
 
         then:
-        giveAwayRepository.findAllByEvent(eventRepository.findOne(100023L)).collect {
+        giveAwayRepository.findAllByEvent(eventRepository.findById(100023L).get()).collect {
             [name: it.prize.name, amount: it.amount]
         } == [[name: "IntelliJ IDEA Licence Key", amount: 1], [name: "Structure101 Licence Key", amount: 1]]
 
         and:
-        giveAwayRepository.findAllByEvent(eventRepository.findOne(100024L)).collect {
+        giveAwayRepository.findAllByEvent(eventRepository.findById(100024L).get()).collect {
             [name: it.prize.name, amount: it.amount]
         } == [[name: "'Scala in Action' eBook", amount: 1], [name: "IntelliJ IDEA Licence Key", amount: 1]]
     }
@@ -109,12 +109,12 @@ class Xenia10DumpRecoverySpec extends Specification {
         dumpRecovery.recover()
 
         then:
-        drawResultRepository.findAllByEvent(eventRepository.findOne(100023L)).collect {
+        drawResultRepository.findAllByEvent(eventRepository.findById(100023L).get()).collect {
             [member: it.member.name, prize: it.giveAway.prize.name]
         } == [[member: "Joe Doe", prize: "IntelliJ IDEA Licence Key"], [member: "Paul Smith", prize: "Structure101 Licence Key"]]
 
         and:
-        drawResultRepository.findAllByEvent(eventRepository.findOne(100024L)).collect {
+        drawResultRepository.findAllByEvent(eventRepository.findById(100024L).get()).collect {
             [member: it.member.name, prize: it.giveAway.prize.name]
         } == [[member: "Paul Smith", prize: "'Scala in Action' eBook"], [member: "Margaret Lee Cooper", prize: "IntelliJ IDEA Licence Key"]]
     }

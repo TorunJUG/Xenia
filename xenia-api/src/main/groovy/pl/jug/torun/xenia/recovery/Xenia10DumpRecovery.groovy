@@ -87,7 +87,7 @@ class Xenia10DumpRecovery implements InitializingBean {
                 log.debug 'There are {} draw results to import', importedData.size()
 
                 importedData.each { row ->
-                    Event event = eventRepository.findOne(row.eventId)
+                    Event event = eventRepository.findById(row.eventId).orElse(null)
                     if (event) {
                         Member member = memberRepository.findByName(row.member)
 

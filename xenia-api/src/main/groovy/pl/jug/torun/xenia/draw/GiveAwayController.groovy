@@ -49,7 +49,7 @@ class GiveAwayController {
     public GiveAway create(@PathVariable("id") Event event, @Valid @RequestBody CreateGiveAwayRequest request) {
         GiveAway giveAway = new GiveAway(
                 event: event,
-                prize: prizeRepository.findOne(request.prize),
+                prize: prizeRepository.findById(request.prize).get(),
                 amount: request.amount,
                 emailRequired: request.emailRequired
         )
