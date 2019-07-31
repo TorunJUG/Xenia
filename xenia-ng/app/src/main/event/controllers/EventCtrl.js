@@ -67,13 +67,17 @@ angular.module('Xenia.Event')
         };
 
         event.openCreateGiveawayModal = function() {
-            event.giveaway = {};
+            event.giveaway = {
+                amount : 1
+            };
             $("#giveawayModal").modal("show");
         };
 
         event.createGiveaway = function(){
             Giveaway.create($routeParams.id, event.giveaway).then(function(result) {
-                event.giveaway = {};
+                event.giveaway = {
+                    amount : 1
+                };
                 event.getGiveaways();
                 $("#giveawayModal").modal("hide");
             });
