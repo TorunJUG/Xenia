@@ -13,6 +13,6 @@ class TestApplication {
 
     @Bean
     public MeetupRestTemplate meetupRestTemplate() {
-        return new MeetupRestTemplate(UUID.randomUUID().toString(), "Meetup-API-Testing")
+        return new MeetupRestTemplate("Meetup-API-Testing")
     }
 }

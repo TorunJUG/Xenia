@@ -3,3 +3,5 @@
 /xenia-ng/node_modules/
 # Project exclude paths
 /xenia-api/target/
+/xenia-ng/app/bower_components/
+xeniadb.mv.db

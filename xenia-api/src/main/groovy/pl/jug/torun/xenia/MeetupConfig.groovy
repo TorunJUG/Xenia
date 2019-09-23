@@ -9,11 +9,11 @@ import pl.jug.torun.xenia.meetup.MeetupRestTemplate
 @ConfigurationProperties(prefix = "meetup")
 class MeetupConfig {
 
-    String key
     String groupUrlName
 
+
     @Bean
-    public MeetupRestTemplate meetupRestTemplate() {
-        return new MeetupRestTemplate(key, groupUrlName)
+    MeetupRestTemplate meetupRestTemplate() {
+        return new MeetupRestTemplate(groupUrlName)
     }
 }

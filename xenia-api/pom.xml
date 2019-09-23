@@ -50,6 +50,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+
         </dependency>
 
         <dependency>
@@ -155,59 +156,20 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>3.4.0-01</version>
-                    </dependency>
-
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>2.5.7-01</version>
-                    </dependency>
-                </dependencies>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.7.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>addSources</goal>
+                            <goal>addTestSources</goal>
+                            <goal>compile</goal>
+                            <goal>compileTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>3.4.0-01</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
-              <groupId>com.google.code.maven-replacer-plugin</groupId>
-              <artifactId>replacer</artifactId>
-              <version>1.5.3</version>
-              <executions>
-                <execution>
-                  <phase>prepare-package</phase>
-                  <goals>
-                    <goal>replace</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <configuration>
-                <file>target/classes/application.properties</file>
-                <regex>false</regex>
-                <replacements>
-                  <replacement>
-                    <token>meetup.key = xxx</token>
-                    <value>meetup.key = ${MEETUP_KEY}</value>
-                  </replacement>
-                  <replacement>
-                    <token>meetup.groupUrlName = yyy</token>
-                    <value>meetup.groupUrlName = ${MEETUP_NAME}</value>
-                  </replacement>
-                </replacements>
-              </configuration>
-            </plugin>
-
-
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.6</version>
